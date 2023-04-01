@@ -30,3 +30,9 @@ void MainWindow::on_pushButton_clicked()
 {
     openPhoto();
 }
+
+void MainWindow::on_compressionButton_clicked()
+{
+
+}
+

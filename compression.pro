@@ -10,6 +10,7 @@ CONFIG += c++20
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
+        fractalcomression.cpp \
         graphicsview.cpp \
         main.cpp \
         mainwindow.cpp
@@ -23,5 +24,6 @@ FORMS += \
     mainwindow.ui
 
 HEADERS += \
+    fractalcomression.h \
     graphicsview.h \
     mainwindow.h
