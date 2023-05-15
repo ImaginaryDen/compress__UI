@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "graphicsview.h"
+#include "fractalcomression.h"
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    scene = std::make_unique<QGraphicsScene>();
-    ui->OriginView->setScene(scene.get());
+	sceneOrigin = std::make_unique<QGraphicsScene>();
+	ui->OriginView->setScene(sceneOrigin.get());
 }
 
 MainWindow::~MainWindow()
@@ -22,8 +24,8 @@ void MainWindow::openPhoto()
     QString fileName;
     fileName = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath());
     QImage image(fileName);
-    item = std::make_unique<QGraphicsPixmapItem>(QPixmap::fromImage(image));
-    scene->addItem(item.get());
+	itemOrigin = std::make_unique<QGraphicsPixmapItem>(QPixmap::fromImage(image));
+	sceneOrigin->addItem(itemOrigin.get());
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -33,6 +35,18 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_compressionButton_clicked()
 {
+	FractalComression FrComresion((QGraphicsPixmapItem *)itemOrigin.get());
 
+	FrComresion.Comression();
+	FrComresion.Decomression();
+
+	sceneNew = std::make_unique<QGraphicsScene>();
+	ui->resultView->setScene(sceneNew.get());
+	std::cout << "compression done" << std::endl;
+
+	QString fileName(FrComresion.fileNameResult.c_str());
+	QImage image(fileName);
+	itemNew = std::make_unique<QGraphicsPixmapItem>(QPixmap::fromImage(image));
+	sceneNew->addItem(itemNew.get());
 }
 

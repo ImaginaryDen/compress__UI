@@ -28,14 +28,14 @@
     <item row="2" column="0">
      <widget class="QPushButton" name="pushButton">
       <property name="text">
-       <string>PushButton</string>
+       <string>Выбрать изображение</string>
       </property>
      </widget>
     </item>
     <item row="3" column="0">
      <widget class="QPushButton" name="compressionButton">
       <property name="text">
-       <string>PushButton</string>
+       <string>Сжать</string>
       </property>
      </widget>
     </item>

@@ -35,8 +35,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    std::unique_ptr<QGraphicsScene> scene;
-    std::unique_ptr<QGraphicsItem> item;
+	std::unique_ptr<QGraphicsScene> sceneOrigin;
+	std::unique_ptr<QGraphicsScene> sceneNew;
+	std::unique_ptr<QGraphicsItem> itemOrigin;
+	std::unique_ptr<QGraphicsItem> itemNew;
 
 };
 #endif // MAINWINDOW_H
